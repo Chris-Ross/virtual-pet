@@ -1,13 +1,15 @@
 
-let hunger = 100;
+
 class VirtualPet {
-    parse(string) {
-        if (string === 'hunger') {
-            return hunger;
-        }
-        if (string !== 'hunger') {
-            return 'help';
-        }
+    constructor(hunger) {
+        this._hunger = hunger;
     }
+    get hunger () {
+        return this._hunger;
+    }
+    /*constructor(happiness) {
+        this._happiness = happiness;
+    }*/
 }
+
 module.exports = VirtualPet;
