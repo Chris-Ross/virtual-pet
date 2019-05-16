@@ -1,0 +1,4 @@
+Pulled files from github
+Installed node
+Installed readline-sync
+Installed Jest

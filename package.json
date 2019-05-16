@@ -1,0 +1,26 @@
+{
+  "name": "virtual-pet",
+  "version": "1.0.0",
+  "description": "This is the WCCCI JS group project for Virtual Pet. the aim is to create an interactive virtual pet.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chris-Ross/virtual-pet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chris-Ross/virtual-pet/issues"
+  },
+  "homepage": "https://github.com/Chris-Ross/virtual-pet#readme",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
+}
