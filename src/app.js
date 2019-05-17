@@ -35,5 +35,8 @@ while (quitCondition) {
     console.log(
       "your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
     );
+  } else if (userResponse === "5") {
+    quitCondition = false;
+    console.log("Thanks for playing! Come back soon!");
   }
 }
