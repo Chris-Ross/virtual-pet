@@ -1,15 +1,19 @@
 
-
+/* constructor(x, y, z) {
+    this._x = x;
+    this._y = y;
+    this._z = z;
+};*/
 class VirtualPet {
-    constructor(hunger) {
-        this._hunger = hunger;
+    constructor(energy) {
+        this._energy = energy;
     }
-    get hunger () {
-        return this._hunger;
+    get energy () {
+        return this._energy;
     }
-    /*constructor(happiness) {
-        this._happiness = happiness;
-    }*/
+    eat(){
+        this._energy += 10;
+    }
 }
 
 module.exports = VirtualPet;

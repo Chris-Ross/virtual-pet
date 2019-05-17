@@ -2,3 +2,5 @@ Pulled files from github
 Installed node
 Installed readline-sync
 Installed Jest
+
+Increase in test method means that when fed the numerical value of hunger goes up
