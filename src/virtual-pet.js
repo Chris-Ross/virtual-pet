@@ -4,10 +4,10 @@
     this._z = z;
 };*/
 class VirtualPet {
-  constructor(energy, entertainment, hygene) {
+  constructor(energy, entertainment, hygiene) {
     this._energy = energy;
     this._entertainment = entertainment;
-    this._hygene = hygene;
+    this._hygiene = hygiene;
   }
   get energy() {
     return this._energy;
@@ -15,17 +15,23 @@ class VirtualPet {
   get entertainment() {
     return this._entertainment;
   }
-  get hygene() {
-    return this._hygene;
+  get hygiene() {
+    return this._hygiene;
   }
   feed() {
     this._energy += 10;
+    this._hygiene -= 5;
+    this._entertainment -= 5;
   }
   play() {
     this._entertainment += 10;
+    this._energy -= 5;
+    this._hygiene -= 5;
   }
   bathe() {
-    this._hygene += 10;
+    this._hygiene += 10;
+    this._entertainment -= 5;
+    this._energy -= 5;
   }
 }
 module.exports = VirtualPet;

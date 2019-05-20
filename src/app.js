@@ -22,31 +22,33 @@ console.log("Hello!\nWelcome to Virtual Pet!!!");
 let quitCondition = true;
 while (quitCondition) {
   const userResponse = input.question(
-    "How would you like to interact with your pet?\n" +
+    "\nHow would you like to interact with your pet?\n" +
       `Enter "1" for ${blueText("Show pet stats")}\n` +
       `Enter "2" for ${blueText("Feed")}\n` +
-      `Enter "3" for ${blueText("Play")}\n` +
+      `Enter "3" for ${blueText(
+        "Play"
+      )} this will increase entertainment and decrease energy and hygiene!\n` +
       `Enter "4" for ${blueText("Bathe")}\n` +
-      `Enter "5" for ${blueText("Quit")}\n`
+      `Enter "5" for ${blueText("Quit")}\n\n`
   );
   if (userResponse === "1") {
     console.log(
-      "energy is: " +
+      "\nEnergy is: " +
         `${newPet.energy}` +
-        " entertainment is: " +
+        " Entertainment is: " +
         `${newPet.entertainment}` +
-        " hygene is: " +
-        `${newPet.hygene}`
+        " hygiene is: " +
+        `${newPet.hygiene}`
     );
   } else if (userResponse === "2") {
-    console.log("You feed your pet an scooby snack!!!!!");
+    console.log("\nYou feed your pet an scooby snack!!!!!");
     newPet.feed();
     console.log("Your pet finished their scooby snack!!!");
     console.log(
       "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
     );
   } else if (userResponse === "3") {
-    console.log("You play fetch with your pet!!!!");
+    console.log("\nYou play fetch with your pet!!!!");
     newPet.play();
     console.log("Your pet retrieved the ball!!");
     console.log(
@@ -54,15 +56,25 @@ while (quitCondition) {
         `${newPet.entertainment}`
     );
   } else if (userResponse === "4") {
-    console.log("You bathe your dirty pet!!!!");
+    console.log("\nYou bathe your dirty pet!!!!");
     newPet.bathe();
     console.log("Your pet plays in the water while you wash it!!!!");
     console.log(
-      "Your pet gained 10 'cleanliness'! Their hygene is now " +
-        `${newPet.hygene}`
+      "Your pet gained 10 'cleanliness'! Their hygiene is now " +
+        `${newPet.hygiene}`
     );
   } else if (userResponse === "5") {
     quitCondition = false;
-    console.log("Thanks for playing! Come back soon!");
+    console.log(`%c
+
+    .-------------.       .    .   *       *   
+   /_/_/_/_/_/_/_/ \         *       .   )    .
+  //_/_/_/_/_/_// _ \ __          .        .   
+ /_/_/_/_/_/_/_/|/ \.' .'-o                    
+  |             ||-'(/ ,--'                    
+  |             ||  _ |                        
+  |             ||'' ||                        
+  |_____________|| |_|L                     `);
+    console.log("\nThanks for playing! Come back soon!");
   }
 }
