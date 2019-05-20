@@ -7,8 +7,18 @@ const blueText = chalk.blue;
 const newPet = new virtualPet(50, 50, 50);
 // \n is a linebreak command.
 // Welcome message and first interactive options.
+console.log(
+  `%c
+  _______________________
+< Please dont abandon me! >
+ -------------------------
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||`
+);
 console.log("Hello!\nWelcome to Virtual Pet!!!");
-
 let quitCondition = true;
 while (quitCondition) {
   const userResponse = input.question(
