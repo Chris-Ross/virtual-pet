@@ -33,7 +33,23 @@ while (quitCondition) {
     newPet.feed();
     console.log("Your pet finished their scooby snack!!!");
     console.log(
-      "your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+      "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+    );
+  } else if (userResponse === "3") {
+    console.log("You play fetch with your pet!!!!");
+    newPet.play();
+    console.log("Your pet retrieved the ball!!");
+    console.log(
+      "Your pet gained 10 'joy'! Their entertainment is now " +
+        `${newPet.entertainment}`
+    );
+  } else if (userResponse === "4") {
+    console.log("You bathe your dirty pet!!!!");
+    newPet.bathe();
+    console.log("Your pet plays in the water while you wash it!!!!");
+    console.log(
+      "Your pet gained 10 'cleanliness'! Their hygene is now " +
+        `${newPet.hygene}`
     );
   } else if (userResponse === "5") {
     quitCondition = false;
