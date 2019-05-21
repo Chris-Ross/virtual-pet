@@ -3,9 +3,9 @@ const Shelter = require("../src/shelter");
 
 describe("Shelter and fxns", () => {
   test("Should return how many pets are in the shelter.", () => {
-    const underTest = new Shelter();
+    const underTest = new Shelter(10, [1,2,3,4,5,6]);
     const actual = underTest.pets;
-    expect(actual).toEqual(3);
+    expect(actual).toEqual(6);
   });
 
   test("Should return cleanliness of the shelter.", () => {
