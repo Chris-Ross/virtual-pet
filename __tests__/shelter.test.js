@@ -1,5 +1,6 @@
 // Requirements
 const Shelter = require("../src/shelter");
+const Dog = require("../src/dog");
 
 describe("Shelter and fxns", () => {
   let underTest;
@@ -33,5 +34,12 @@ describe("Shelter and fxns", () => {
     underTest.removePet();
     const actual = underTest.pets;
     expect(actual).toEqual(3);
+  });
+
+  test("should return dog in shelter.", () => {
+    const underTest = new Shelter();
+    underTest.addPet(Dog);
+    const actual = underTest.pets;
+    expect(actual).toEqual(4);
   });
 });
