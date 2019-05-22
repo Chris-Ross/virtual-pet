@@ -1,7 +1,7 @@
 // Requirements
 // const Dog = require("../src/dog");
 class Shelter {
-  constructor(cleanliness = 50, pets = [1, 2, 3]) {
+  constructor(cleanliness = 50) {
     this._pets = pets;
     pets = [];
     this._cleanliness = cleanliness;
@@ -16,10 +16,10 @@ class Shelter {
     this._cleanliness += 10;
   }
   addPet(pet) {
-      this._pets.push(pet);
+    this._pets.push(pet);
   }
   removePet() {
-      this._pets.pop();
+    this._pets.pop();
   }
 }
 
