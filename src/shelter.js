@@ -16,10 +16,10 @@ class Shelter {
     this._cleanliness += 10;
   }
   addPet(pet) {
-      this._pets.push(pet);
+    this._pets.push(pet);
   }
   removePet() {
-      this._pets.pop();
+    this._pets.pop();
   }
 }
 

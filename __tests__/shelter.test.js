@@ -1,9 +1,10 @@
 // Requirements
 const Shelter = require("../src/shelter");
+const Dog = require("../src/dog");
 
 describe("Shelter and fxns", () => {
   test("Should return how many pets are in the shelter.", () => {
-    const underTest = new Shelter(10, [1,2,3,4,5,6]);
+    const underTest = new Shelter(10, [1, 2, 3, 4, 5, 6]);
     const actual = underTest.pets;
     expect(actual).toEqual(6);
   });
@@ -34,5 +35,12 @@ describe("Shelter and fxns", () => {
     underTest.removePet();
     const actual = underTest.pets;
     expect(actual).toEqual(3);
+  });
+
+  test("should return dog in shelter.", () => {
+    const underTest = new Shelter();
+    underTest.addPet(Dog);
+    const actual = underTest.pets;
+    expect(actual).toEqual(4);
   });
 });
