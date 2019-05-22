@@ -2,21 +2,23 @@
 // const Dog = require("../src/dog");
 class Shelter {
   constructor(cleanliness = 50) {
-    this._pets = pets;
-    pets = [];
+    this._pets = {};
     this._cleanliness = cleanliness;
   }
   get pets() {
-    return this._pets.length;
+    return Object.values(this._pets);
   }
   get sanitation() {
     return this._cleanliness;
+  }
+  get shelterSize() {
+    return Object.keys(this._pets).length;
   }
   sanitize() {
     this._cleanliness += 10;
   }
   addPet(pet) {
-    this._pets.push(pet);
+    this._pets[pet.Name] = pet;
   }
   removePet() {
     this._pets.pop();
