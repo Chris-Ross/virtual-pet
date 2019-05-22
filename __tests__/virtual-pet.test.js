@@ -12,7 +12,7 @@ describe("virtual pet", () => {
     const underTest = new virtualPet(50, 50, 50);
     underTest.feed();
     const actual = underTest.energy;
-    // Here our toEqual is 60 because we are calling the eat method.
+    // Here our toEqual is 60 because we are calling the eat method(+10 when given 50).
     expect(actual).toEqual(60);
   });
 
