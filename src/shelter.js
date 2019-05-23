@@ -18,10 +18,13 @@ class Shelter {
     this._cleanliness += 10;
   }
   addPet(pet) {
-    this._pets[pet.Name] = pet;
+    this._pets[pet.name] = pet;
   }
-  removePet() {
-    this._pets.pop();
+  removePet(petToBeDeleted) {
+    const petToReturn = this._pets[petToBeDeleted];
+    delete this._pets[petToBeDeleted];
+
+    return petToReturn;
   }
 }
 

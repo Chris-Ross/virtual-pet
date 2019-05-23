@@ -4,11 +4,15 @@
     this._z = z;
 };*/
 class VirtualPet {
-  constructor(energy, entertainment, hygiene, cage) {
+  constructor(name, cage, energy = 50, entertainment = 50, hygiene = 50) {
+    this._name = name;
     this._energy = energy;
     this._entertainment = entertainment;
     this._hygiene = hygiene;
     this._cage = cage;
+  }
+  get name() {
+    return this._name;
   }
   get energy() {
     return this._energy;
