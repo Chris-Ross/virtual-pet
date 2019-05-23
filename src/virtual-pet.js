@@ -12,7 +12,7 @@ class VirtualPet {
     entertainment = 50,
     hygiene = 50
   ) {
-    this.name = name;
+    this._name = name;
     this._energy = energy;
     this._entertainment = entertainment;
     this._hygiene = hygiene;
@@ -20,7 +20,7 @@ class VirtualPet {
     this._type = type;
   }
   get name() {
-    return this.name;
+    return this._name;
   }
   get energy() {
     return this._energy;
