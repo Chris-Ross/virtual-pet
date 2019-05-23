@@ -41,43 +41,62 @@ while (quitCondition) {
   // }
   switch (userResponse) {
     case "1":
-      console.log(
-        "\nEnergy is: " +
-          `${newPet.energy}` +
-          " Entertainment is: " +
-          `${newPet.entertainment}` +
-          " hygiene is: " +
-          `${newPet.hygiene}`
-      );
+      showstats();
       break;
     case "2":
-      console.log("\nYou feed your pet an scooby snack!!!!!");
-      newPet.feed();
-      console.log("Your pet finished their scooby snack!!!");
-      console.log(
-        "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
-      );
+      petfeed();
       break;
     case "3":
-      console.log("\nYou play fetch with your pet!!!!");
-      newPet.play();
-      console.log("Your pet retrieved the ball!!");
-      console.log(
-        "Your pet gained 10 'joy'! Their entertainment is now " +
-          `${newPet.entertainment}`
-      );
+      petplay();
       break;
     case "4":
-      console.log("\nYou bathe your dirty pet!!!!");
-      newPet.bathe();
-      console.log("Your pet plays in the water while you wash it!!!!");
-      console.log(
-        "Your pet gained 10 'cleanliness'! Their hygiene is now " +
-          `${newPet.hygiene}`
-      );
+      petclean();
       break;
     case "5":
-      console.log(`%c
+      quitmessage()
+  }
+}
+
+function showstats() {
+  console.log(
+    "\nEnergy is: " +
+      `${newPet.energy}` +
+      " Entertainment is: " +
+      `${newPet.entertainment}` +
+      " hygiene is: " +
+      `${newPet.hygiene}`
+  );
+}
+
+function petfeed() {
+  console.log("\nYou feed your pet an scooby snack!!!!!");
+  newPet.feed();
+  console.log("Your pet finished their scooby snack!!!");
+  console.log(
+    "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+  );
+}
+
+function petplay() {
+  console.log("\nYou feed your pet an scooby snack!!!!!");
+  newPet.feed();
+  console.log("Your pet finished their scooby snack!!!");
+  console.log(
+    "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+  );
+}
+
+function petclean() {
+  console.log("\nYou feed your pet an scooby snack!!!!!");
+  newPet.feed();
+  console.log("Your pet finished their scooby snack!!!");
+  console.log(
+    "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+  );
+}
+
+function quitmessage() {
+  console.log(`%c
 
     .-------------.       .    .   *       *   
    /_/_/_/_/_/_/_/ \         *       .   )    .
@@ -94,5 +113,4 @@ while (quitCondition) {
       console.log(
         "\nInvalid response. Please input a valid response from the menu\n"
       );
-  }
 }
