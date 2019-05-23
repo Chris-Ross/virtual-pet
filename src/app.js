@@ -53,7 +53,12 @@ while (quitCondition) {
       petclean();
       break;
     case "5":
-      quitmessage()
+      quitmessage();
+    default:
+      console.log(
+        "\nInvalid response. Please input a valid response from the menu\n"
+      );
+      break;
   }
 }
 
@@ -106,11 +111,6 @@ function quitmessage() {
   |             ||  _ |                        
   |             ||'' ||                        
   |_____________|| |_|L                     `);
-      console.log("\nThanks for playing! Come back soon!");
-      quitCondition = false;
-      break;
-    default:
-      console.log(
-        "\nInvalid response. Please input a valid response from the menu\n"
-      );
+  console.log("\nThanks for playing! Come back soon!");
+  quitCondition = false;
 }
