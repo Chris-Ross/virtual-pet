@@ -16,10 +16,10 @@ const blueText = chalk.blue;
 // Starter pets
 const dogStarter = new Dog("Spot", 100);
 const catStarter = new Cat("Fucker", 101);
-const birdStarter = new Bird("Annoyance", 103);
-const roboDogStarter = new RoboDog("Poop Machine", 104);
-const roboCatStarter = new RoboCat("Mechanized Death", 105);
-const mechBirdStarter = new MechBird("B2 Bomber", 106);
+const birdStarter = new Bird("Annoyance", 102);
+const roboDogStarter = new RoboDog("Poop Machine", 103);
+const roboCatStarter = new RoboCat("Mechanized Death", 104);
+const mechBirdStarter = new MechBird("B2 Bomber", 105);
 
 const currentShelter = new Shelter();
 
@@ -48,50 +48,67 @@ while (quitCondition) {
     "\nWelcome to the Jungle!!\n  We have fun and games!!\n   Choose which pet you wish to have!!!\n    They are here to entertain!!!\n"
   );
   const entryResponse = input.question(
-    "What would you like to do?\n  1. List current pets\n  2. Adopt a new pet\n  3. Return a current pet\n  4. Quit\n\n>> :"
+    "What would you like to do?\n  1. List current pets\n  2. Checkout Pet\n  3. Remove a current pet (delete a pet)\n  4. Adopt a Pet\n 5. Clean Cages\n 6. Quit\n\n>> :"
   );
   switch (entryResponse) {
     case "1":
       console.table(currentShelter.listPets());
       break;
     case "2":
-      adoptMenu();
-      break;
-  }
+      const petCheckOut = input.question(
+        "Which pet would you like to interact with? (Exact name please!)\n\n >> :"
+      );
 
-  const userResponse = input.question(
-    "\nHow would you like to interact with your pet?\n" +
-      `Enter "1" for ${blueText("Show pet stats")}\n` +
-      `Enter "2" for ${blueText("Feed")}\n` +
-      `Enter "3" for ${blueText(
-        "Play"
-      )} this will increase entertainment and decrease energy and hygiene!\n` +
-      `Enter "4" for ${blueText("Bathe")}\n` +
-      `Enter "5" for ${blueText("Quit")}\n\n`
-  );
+      break;
 
-  switch (userResponse) {
-    case "1":
-      showStats();
-      break;
-    case "2":
-      petFeed();
-      break;
     case "3":
-      petPlay();
+      removeMenu();
       break;
     case "4":
-      petClean();
+      adoptMenu();
       break;
     case "5":
+      break;
+    case "6":
       quitMessage();
       break;
     default:
-      console.log(
-        "\nInvalid response. Please input a valid response from the menu\n"
-      );
-      break;
+      console.log("Please enter a valid response!");
   }
+
+  // const userResponse = input.question(
+  //   "\nHow would you like to interact with your pet?\n" +
+  //     `Enter "1" for ${blueText("Show pet stats")}\n` +
+  //     `Enter "2" for ${blueText("Feed")}\n` +
+  //     `Enter "3" for ${blueText(
+  //       "Play"
+  //     )} this will increase entertainment and decrease energy and hygiene!\n` +
+  //     `Enter "4" for ${blueText("Bathe")}\n` +
+  //     `Enter "5" for ${blueText("Quit")}\n\n`
+  // );
+
+  // switch (userResponse) {
+  //   case "1":
+  //     showStats();
+  //     break;
+  //   case "2":
+  //     petFeed();
+  //     break;
+  //   case "3":
+  //     petPlay();
+  //     break;
+  //   case "4":
+  //     petClean();
+  //     break;
+  //   case "5":
+  //     quitMessage();
+  //     break;
+  //   default:
+  //     console.log(
+  //       "\nInvalid response. Please input a valid response from the menu\n"
+  //     );
+  //     break;
+  // }
 }
 
 function showStats() {
@@ -159,8 +176,19 @@ function adoptMenu() {
         "What would you like to name your new Dog?\n\n >> :"
       );
       let newUserPet = new Dog(newName, 150);
-      console.log(newName);
-      console.log(newUserPet);
+      currentShelter.addPet(newUserPet);
+      // console.log(newName);
+      // console.log(newUserPet);
+      console.table(currentShelter.listPets());
       break;
   }
+}
+
+function removeMenu() {
+  const petToBeRemoved = input.question(
+    "Which pet would you like to remove from the Shelter? (Exact name please!)\n\n >> :"
+  );
+  currentShelter.removePet(petToBeRemoved);
+  console.log(`You have sent ${petToBeRemoved} to the farm`);
+  console.table(currentShelter.listPets());
 }
