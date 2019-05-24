@@ -10,7 +10,7 @@ const newPet = new virtualPet(50, 50, 50);
 console.log(
   `%c
   _______________________
-< Please dont abandon me! >
+< Please don't abandon me! >
  -------------------------
         \\   ^__^
          \\  (oo)\\_______
@@ -21,6 +21,39 @@ console.log(
 console.log("Hello!\nWelcome to Virtual Pet!!!");
 let quitCondition = true;
 while (quitCondition) {
+  console.log(
+    "\nWelcome to the Jungle!!\n We have fun and games!!\n Choose which pet you wish to have!!!\n They are here to entertain!!!\n"
+  );
+ 
+if (entryResponse === "1")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const userResponse = input.question(
     "\nHow would you like to interact with your pet?\n" +
       `Enter "1" for ${blueText("Show pet stats")}\n` +
@@ -47,6 +80,7 @@ while (quitCondition) {
       break;
     case "5":
       quitMessage();
+      break;
     default:
       console.log(
         "\nInvalid response. Please input a valid response from the menu\n"
@@ -76,20 +110,22 @@ function petFeed() {
 }
 
 function petPlay() {
-  console.log("\nYou feed your pet an scooby snack!!!!!");
-  newPet.feed();
-  console.log("Your pet finished their scooby snack!!!");
+  console.log("\nYou play fetch with your pet!!!!");
+  newPet.play();
+  console.log("Your pet retrieved the ball!!");
   console.log(
-    "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+    "Your pet gained 10 'joy'! Their entertainment is now " +
+      `${newPet.entertainment}`
   );
 }
 
 function petClean() {
-  console.log("\nYou feed your pet an scooby snack!!!!!");
-  newPet.feed();
-  console.log("Your pet finished their scooby snack!!!");
+  console.log("\nYou bathe your dirty pet!!!!");
+  newPet.bathe();
+  console.log("Your pet plays in the water while you wash it!!!!");
   console.log(
-    "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+    "Your pet gained 10 'cleanliness'! Their hygiene is now " +
+      `${newPet.hygiene}`
   );
 }
 
@@ -106,4 +142,8 @@ function quitMessage() {
   |_____________|| |_|L                     `);
   console.log("\nThanks for playing! Come back soon!");
   quitCondition = false;
+}
+
+function shelterMenu() {
+const entryResponse = input.question("What would you like to do?\n  1. List current pets\n  2. Adopt a new pet\n  3. Return a current pet\n  4. Quit\n\n>> :");
 }
