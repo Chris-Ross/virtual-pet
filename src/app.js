@@ -1,12 +1,35 @@
 // Dependencies
 const input = require("readline-sync");
-const virtualPet = require("./virtual-pet");
+const VirtualPet = require("./virtual-pet");
 const chalk = require("chalk");
+const Shelter = require("./shelter");
+const Dog = require("./dog");
+const Cat = require("./cat");
+const Bird = require("./bird");
+const RoboDog = require("./robo-dog");
+const RoboCat = require("./robo-cat");
+const MechBird = require("./mech-bird");
+
+//Chalk colors
 const blueText = chalk.blue;
-// New instance of virtualPet
-const newPet = new virtualPet(50, 50, 50);
-// \n is a linebreak command.
-// Welcome message and first interactive options.
+
+// Starter pets
+const dogStarter = new Dog("Spot", 100);
+const catStarter = new Cat("Fucker", 101);
+const birdStarter = new Bird("Annoyance", 103);
+const roboDogStarter = new RoboDog("Poop Machine", 104);
+const roboCatStarter = new RoboCat("Mechanized Death", 105);
+const mechBirdStarter = new MechBird("B2 Bomber", 106);
+
+const currentShelter = new Shelter();
+
+currentShelter.addPet(dogStarter);
+currentShelter.addPet(catStarter);
+currentShelter.addPet(birdStarter);
+currentShelter.addPet(roboDogStarter);
+currentShelter.addPet(roboCatStarter);
+currentShelter.addPet(mechBirdStarter);
+
 console.log(
   `%c
   _______________________
@@ -22,37 +45,19 @@ console.log("Hello!\nWelcome to Virtual Pet!!!");
 let quitCondition = true;
 while (quitCondition) {
   console.log(
-    "\nWelcome to the Jungle!!\n We have fun and games!!\n Choose which pet you wish to have!!!\n They are here to entertain!!!\n"
+    "\nWelcome to the Jungle!!\n  We have fun and games!!\n   Choose which pet you wish to have!!!\n    They are here to entertain!!!\n"
   );
- 
-if (entryResponse === "1")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const entryResponse = input.question(
+    "What would you like to do?\n  1. List current pets\n  2. Adopt a new pet\n  3. Return a current pet\n  4. Quit\n\n>> :"
+  );
+  switch (entryResponse) {
+    case "1":
+      console.table(currentShelter.listPets());
+      break;
+    case "2":
+      adoptMenu();
+      break;
+  }
 
   const userResponse = input.question(
     "\nHow would you like to interact with your pet?\n" +
@@ -144,6 +149,18 @@ function quitMessage() {
   quitCondition = false;
 }
 
-function shelterMenu() {
-const entryResponse = input.question("What would you like to do?\n  1. List current pets\n  2. Adopt a new pet\n  3. Return a current pet\n  4. Quit\n\n>> :");
+function adoptMenu() {
+  const petType = input.question(
+    " Thankyou for choosing to adopt a new pet!\n What type of pet would you like? \n 1. Dog\n 2. Cat\n 3. Bird\n 4. Robotic Dog\n 5. Robotic Cat\n 6. Mechanized Bird\n\n >> :"
+  );
+  switch (petType) {
+    case "1":
+      const newName = input.question(
+        "What would you like to name your new Dog?\n\n >> :"
+      );
+      let newUserPet = new Dog(newName, 150);
+      console.log(newName);
+      console.log(newUserPet);
+      break;
+  }
 }

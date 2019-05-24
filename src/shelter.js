@@ -26,6 +26,9 @@ class Shelter {
 
     return petToReturn;
   }
+  listPets() {
+    return this._pets;
+  }
 }
 
 module.exports = Shelter;
