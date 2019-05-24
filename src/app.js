@@ -31,29 +31,22 @@ while (quitCondition) {
       `Enter "4" for ${blueText("Bathe")}\n` +
       `Enter "5" for ${blueText("Quit")}\n\n`
   );
-  // switch (key) {
-  //   case value:
 
-  //     break;
-
-  //   default:
-  //     break;
-  // }
   switch (userResponse) {
     case "1":
-      showstats();
+      showStats();
       break;
     case "2":
-      petfeed();
+      petFeed();
       break;
     case "3":
-      petplay();
+      petPlay();
       break;
     case "4":
-      petclean();
+      petClean();
       break;
     case "5":
-      quitmessage();
+      quitMessage();
     default:
       console.log(
         "\nInvalid response. Please input a valid response from the menu\n"
@@ -62,7 +55,7 @@ while (quitCondition) {
   }
 }
 
-function showstats() {
+function showStats() {
   console.log(
     "\nEnergy is: " +
       `${newPet.energy}` +
@@ -73,7 +66,7 @@ function showstats() {
   );
 }
 
-function petfeed() {
+function petFeed() {
   console.log("\nYou feed your pet an scooby snack!!!!!");
   newPet.feed();
   console.log("Your pet finished their scooby snack!!!");
@@ -82,7 +75,7 @@ function petfeed() {
   );
 }
 
-function petplay() {
+function petPlay() {
   console.log("\nYou feed your pet an scooby snack!!!!!");
   newPet.feed();
   console.log("Your pet finished their scooby snack!!!");
@@ -91,7 +84,7 @@ function petplay() {
   );
 }
 
-function petclean() {
+function petClean() {
   console.log("\nYou feed your pet an scooby snack!!!!!");
   newPet.feed();
   console.log("Your pet finished their scooby snack!!!");
@@ -100,7 +93,7 @@ function petclean() {
   );
 }
 
-function quitmessage() {
+function quitMessage() {
   console.log(`%c
 
     .-------------.       .    .   *       *   
