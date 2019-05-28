@@ -29,25 +29,23 @@ currentShelter.addPet(roboDogStarter);
 currentShelter.addPet(roboCatStarter);
 currentShelter.addPet(mechBirdStarter);
 
+console.log(`%c
+
+.-------------.       .    .   *       *   
+/_/_/_/_/_/_/_/ \         *       .   )    .
+//_/_/_/_/_/_// _ \ __          .        .   
+/_/_/_/_/_/_/_/|/ \.' .'-o                    
+|             ||-'(/ ,--'                    
+|             ||  _ |                        
+|             ||'' ||                        
+|_____________|| |_|L                     `);
 console.log(
-  `%c
-  _______________________
-< Please don't abandon me! >
- -------------------------
-        \\   ^__^
-         \\  (oo)\\_______
-            (__)\\       )\\/\\
-                ||----w |
-                ||     ||`
+  "\nWelcome to the Shelter!!\nWe have fun and games!!\nand lots of pets!!!\n"
 );
-console.log("Hello!\nWelcome to Virtual Pet!!!");
 let quitCondition = true;
 while (quitCondition) {
-  console.log(
-    "\nWelcome to the Jungle!!\n  We have fun and games!!\n   Choose which pet you wish to have!!!\n    They are here to entertain!!!\n"
-  );
   const entryResponse = input.question(
-    "What would you like to do?\n  1. List current pets\n  2. Clean cages\n  3. Admit a pet to the shelter\n  4. Adopt a Pet\n 5. Placeholder\n 6. Quit\n\n>> :"
+    "What would you like to do?\n1. List current pets\n2. Clean cages\n3. Admit a pet to the shelter\n4. Adopt a Pet\n5. Placeholder\n6. Quit\n\n>> :"
   );
   switch (entryResponse) {
     case "1":
@@ -148,16 +146,17 @@ function petClean() {
 }
 
 function quitMessage() {
-  console.log(`%c
-
-    .-------------.       .    .   *       *   
-   /_/_/_/_/_/_/_/ \         *       .   )    .
-  //_/_/_/_/_/_// _ \ __          .        .   
- /_/_/_/_/_/_/_/|/ \.' .'-o                    
-  |             ||-'(/ ,--'                    
-  |             ||  _ |                        
-  |             ||'' ||                        
-  |_____________|| |_|L                     `);
+  console.log(
+    `%c
+    _______________________
+  < Please don't abandon me! >
+   -------------------------
+          \\   ^__^
+           \\  (oo)\\_______
+              (__)\\       )\\/\\
+                  ||----w |
+                  ||     ||`
+  );
   console.log("\nThanks for playing! Come back soon!");
   quitCondition = false;
 }
@@ -170,34 +169,34 @@ function adoptMenu() {
 
   switch (petName) {
     case "Spot":
-      console.log(`you adopted ${petName}`);
       dogStarter.adopt();
       console.table(currentShelter.listPets());
+      console.log(`\nyou adopted ${petName}`);
       break;
     case "Hairball":
-      console.log(`you adopted ${petName}`);
       catStarter.adopt();
       console.table(currentShelter.listPets());
+      console.log(`\nyou adopted ${petName}!`);
       break;
     case "Talon":
-      console.log(`you adopted ${petName}`);
       birdStarter.adopt();
       console.table(currentShelter.listPets());
+      console.log(`\nYou adopted ${petName}!`);
       break;
     case "Poop Machine":
-      console.log(`you adopted ${petName}`);
       roboDogStarter.adopt();
       console.table(currentShelter.listPets());
+      console.log(`\nYou adopted ${petName}!`);
       break;
     case "Mechanized Death":
-      console.log(`you adopted ${petName}`);
       roboCatStarter.adopt();
       console.table(currentShelter.listPets());
+      console.log(`\nYou adopted ${petName}!`);
       break;
     case "B2 Bomber":
-      console.log(`you adopted ${petName}`);
       mechBirdStarter.adopt();
       console.table(currentShelter.listPets());
+      console.log(`\nYou adopted ${petName}!`);
       break;
   }
 }
