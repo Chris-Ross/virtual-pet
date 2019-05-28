@@ -10,7 +10,8 @@ class VirtualPet {
     energy = 50,
     entertainment = 50,
     hygiene = 50,
-    type = "organic"
+    type = "organic",
+    isAdopted = false
   ) {
     this._name = name;
     this._energy = energy;
@@ -18,6 +19,7 @@ class VirtualPet {
     this._hygiene = hygiene;
     this._cage = cage;
     this._type = type;
+    this._isAdopted = isAdopted;
   }
   get name() {
     return this._name;
@@ -37,6 +39,11 @@ class VirtualPet {
   get type() {
     return this._type;
   }
+
+  get isAdopted() {
+    return this._isAdopted;
+  }
+
   feed() {
     this._energy += 10;
     this._hygiene -= 5;
@@ -51,6 +58,10 @@ class VirtualPet {
     this._hygiene += 10;
     this._entertainment -= 5;
     this._energy -= 5;
+  }
+
+  adopt() {
+    return (this._isAdopted = true);
   }
 }
 module.exports = VirtualPet;

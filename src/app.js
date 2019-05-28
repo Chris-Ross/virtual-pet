@@ -1,6 +1,5 @@
 // Dependencies
 const input = require("readline-sync");
-const VirtualPet = require("./virtual-pet");
 const chalk = require("chalk");
 const Shelter = require("./shelter");
 const Dog = require("./dog");
@@ -114,7 +113,7 @@ while (quitCondition) {
 function showStats() {
   console.log(
     "\nEnergy is: " +
-      `${newPet.energy}` +
+      `${newUser.energy}` +
       " Entertainment is: " +
       `${newPet.entertainment}` +
       " hygiene is: " +
@@ -167,18 +166,15 @@ function quitMessage() {
 }
 
 function adoptMenu() {
-  const petType = input.question(
-    " Thankyou for choosing to adopt a new pet!\n What type of pet would you like? \n 1. Dog\n 2. Cat\n 3. Bird\n 4. Robotic Dog\n 5. Robotic Cat\n 6. Mechanized Bird\n\n >> :"
+  console.log(" Thank you for choosing to adopt a new pet!");
+  const petName = input.question(
+    "Enter the name of the pet you would like to adopt"
   );
-  switch (petType) {
-    case "1":
-      const newName = input.question(
-        "What would you like to name your new Dog?\n\n >> :"
-      );
-      let newUserPet = new Dog(newName, 150);
-      currentShelter.addPet(newUserPet);
-      // console.log(newName);
-      // console.log(newUserPet);
+
+  switch (petName) {
+    case "Spot":
+      console.log(`you adopted ${petName}`);
+      dogStarter.adopt();
       console.table(currentShelter.listPets());
       break;
   }
