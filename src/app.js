@@ -14,8 +14,8 @@ const blueText = chalk.blue;
 
 // Starter pets
 const dogStarter = new Dog("Spot", 100);
-const catStarter = new Cat("Fucker", 101);
-const birdStarter = new Bird("Annoyance", 102);
+const catStarter = new Cat("Hairball", 101);
+const birdStarter = new Bird("Talon", 102);
 const roboDogStarter = new RoboDog("Poop Machine", 103);
 const roboCatStarter = new RoboCat("Mechanized Death", 104);
 const mechBirdStarter = new MechBird("B2 Bomber", 105);
@@ -47,21 +47,18 @@ while (quitCondition) {
     "\nWelcome to the Jungle!!\n  We have fun and games!!\n   Choose which pet you wish to have!!!\n    They are here to entertain!!!\n"
   );
   const entryResponse = input.question(
-    "What would you like to do?\n  1. List current pets\n  2. Checkout Pet\n  3. Remove a current pet (delete a pet)\n  4. Adopt a Pet\n 5. Clean Cages\n 6. Quit\n\n>> :"
+    "What would you like to do?\n  1. List current pets\n  2. Clean cages\n  3. Admit a pet to the shelter\n  4. Adopt a Pet\n 5. Placeholder\n 6. Quit\n\n>> :"
   );
   switch (entryResponse) {
     case "1":
       console.table(currentShelter.listPets());
       break;
     case "2":
-      const petCheckOut = input.question(
-        "Which pet would you like to interact with? (Exact name please!)\n\n >> :"
-      );
-
+      // Clean cages will concurrently play, feed and bathe all pets.
       break;
 
     case "3":
-      removeMenu();
+      admitMenu();
       break;
     case "4":
       adoptMenu();
@@ -141,7 +138,7 @@ function petPlay() {
 }
 
 function petClean() {
-  console.log("\nYou bathe your dirty pet!!!!");
+  console.log("\nYou wash your dirty pet!!!!");
   newPet.bathe();
   console.log("Your pet plays in the water while you wash it!!!!");
   console.log(
@@ -168,7 +165,7 @@ function quitMessage() {
 function adoptMenu() {
   console.log(" Thank you for choosing to adopt a new pet!");
   const petName = input.question(
-    "Enter the name of the pet you would like to adopt"
+    "Enter the name of the pet you would like to adopt\n\n>>:"
   );
 
   switch (petName) {
@@ -177,14 +174,78 @@ function adoptMenu() {
       dogStarter.adopt();
       console.table(currentShelter.listPets());
       break;
+    case "Hairball":
+      console.log(`you adopted ${petName}`);
+      catStarter.adopt();
+      console.table(currentShelter.listPets());
+      break;
+    case "Talon":
+      console.log(`you adopted ${petName}`);
+      birdStarter.adopt();
+      console.table(currentShelter.listPets());
+      break;
+    case "Poop Machine":
+      console.log(`you adopted ${petName}`);
+      roboDogStarter.adopt();
+      console.table(currentShelter.listPets());
+      break;
+    case "Mechanized Death":
+      console.log(`you adopted ${petName}`);
+      roboCatStarter.adopt();
+      console.table(currentShelter.listPets());
+      break;
+    case "B2 Bomber":
+      console.log(`you adopted ${petName}`);
+      mechBirdStarter.adopt();
+      console.table(currentShelter.listPets());
+      break;
   }
 }
 
-function removeMenu() {
-  const petToBeRemoved = input.question(
-    "Which pet would you like to remove from the Shelter? (Exact name please!)\n\n >> :"
+function admitMenu() {
+  const newPetName = input.question(
+    `Enter the name of the pet you'd like to add.\n`
   );
-  currentShelter.removePet(petToBeRemoved);
-  console.log(`You have sent ${petToBeRemoved} to the farm`);
-  console.table(currentShelter.listPets());
+  const newPetType = input.question(
+    `Enter the type of pet.\n You can choose:\n 1: Dog\n 2: Cat\n 3: Bird\n 4: RoboDog\n 5: RoboCat\n 6: Mechbird.\n`
+  );
+  switch (newPetType) {
+    case "1":
+      const admittedDog = new Dog(newPetName, 106);
+      admittedDog.adopt();
+      currentShelter.addPet(admittedDog);
+      console.table(currentShelter.listPets());
+      break;
+    case "2":
+      const admittedCat = new Cat(newPetName, 107);
+      admittedCat.adopt();
+      currentShelter.addPet(admittedCat);
+      console.table(currentShelter.listPets());
+      break;
+    case "3":
+      const admittedBird = new Bird(newPetName, 108);
+      admittedBird.adopt();
+      currentShelter.addPet(admittedBird);
+      console.table(currentShelter.listPets());
+      break;
+    case "4":
+      const admittedRoboDog = new RoboDog(newPetName, 109);
+      admittedRoboDog.adopt();
+      currentShelter.addPet(admittedRoboDog);
+      console.table(currentShelter.listPets());
+      break;
+    case "5":
+      const admittedRoboCat = new RoboCat(newPetName, 110);
+      admittedRoboCat.adopt();
+      currentShelter.addPet(admittedRoboCat);
+      console.table(currentShelter.listPets());
+      break;
+    case "6":
+      const admittedMechBird = new MechBird(newPetName, 111);
+      admittedMechBird.adopt();
+      currentShelter.addPet(admittedMechBird);
+      console.table(currentShelter.listPets());
+    default:
+  }
+  // console.table(currentShelter.listPets());
 }
