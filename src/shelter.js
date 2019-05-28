@@ -15,16 +15,15 @@ class Shelter {
     return Object.keys(this._pets).length;
   }
   sanitize() {
-    this._cleanliness += 10;
+    this._cleanliness += 13;
   }
   addPet(pet) {
     this._pets[pet.name] = pet;
   }
-  removePet(petToBeDeleted) {
-    const petToReturn = this._pets[petToBeDeleted];
-    delete this._pets[petToBeDeleted];
-
-    return petToReturn;
+  allPets() {
+    Object.values(this._pets).forEach(pet => {
+      pet.feed(), pet.play(), pet.bathe();
+    });
   }
   listPets() {
     return this._pets;
@@ -32,3 +31,10 @@ class Shelter {
 }
 
 module.exports = Shelter;
+
+// removePet(petToBeDeleted) {
+//   const petToReturn = this._pets[petToBeDeleted];
+//   delete this._pets[petToBeDeleted];
+
+//   return petToReturn;
+// }

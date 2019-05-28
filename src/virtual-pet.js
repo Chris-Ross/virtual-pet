@@ -45,19 +45,19 @@ class VirtualPet {
   }
 
   feed() {
-    this._energy += 10;
-    this._hygiene -= 5;
-    this._entertainment -= 5;
+    this._energy += 7;
+    this._hygiene -= 2;
+    this._entertainment -= 1;
   }
   play() {
-    this._entertainment += 10;
-    this._energy -= 5;
-    this._hygiene -= 5;
+    this._energy -= 2;
+    this._hygiene -= 2;
+    this._entertainment += 6;
   }
   bathe() {
-    this._hygiene += 10;
-    this._entertainment -= 5;
-    this._energy -= 5;
+    this._energy -= 2;
+    this._hygiene += 7;
+    this._entertainment += 1;
   }
 
   adopt() {

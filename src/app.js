@@ -7,7 +7,7 @@ const Cat = require("./cat");
 const Bird = require("./bird");
 const RoboDog = require("./robo-dog");
 const RoboCat = require("./robo-cat");
-const MechBird = require("./mech-bird");
+const RoboBird = require("./robo-bird");
 
 //Chalk colors
 const blueText = chalk.blue;
@@ -18,7 +18,7 @@ const catStarter = new Cat("Hairball", 101);
 const birdStarter = new Bird("Talon", 102);
 const roboDogStarter = new RoboDog("Poop Machine", 103);
 const roboCatStarter = new RoboCat("Mechanized Death", 104);
-const mechBirdStarter = new MechBird("B2 Bomber", 105);
+const roboBirdStarter = new RoboBird("B2 Bomber", 105);
 
 const currentShelter = new Shelter();
 
@@ -27,7 +27,7 @@ currentShelter.addPet(catStarter);
 currentShelter.addPet(birdStarter);
 currentShelter.addPet(roboDogStarter);
 currentShelter.addPet(roboCatStarter);
-currentShelter.addPet(mechBirdStarter);
+currentShelter.addPet(roboBirdStarter);
 
 console.log(`%c
 
@@ -40,28 +40,35 @@ console.log(`%c
 |             ||'' ||                        
 |_____________|| |_|L                     `);
 console.log(
-  "\nWelcome to the Shelter!!\nWe have fun and games!!\nand lots of pets!!!\n"
+  `\nWelcome to the Shelter!!\nWe have fun and games!!\nand lots of pets!!!\n\nThe shelter cleanliness is currently ${
+    currentShelter.sanitation
+  }!\nDon't let it get too dirty...\n\n`
 );
 let quitCondition = true;
 while (quitCondition) {
   const entryResponse = input.question(
-    "What would you like to do?\n1. List current pets\n2. Clean cages\n3. Admit a pet to the shelter\n4. Adopt a Pet\n5. Placeholder\n6. Quit\n\n>> :"
+    "What would you like to do?\n1. List current pets\n2. Clean cages\n3. Admit a pet to the shelter\n4. Adopt a Pet\n5. Interact with ALL pets!!\n6. Quit\n\n>> :"
   );
   switch (entryResponse) {
     case "1":
       console.table(currentShelter.listPets());
       break;
     case "2":
+      currentShelter.sanitize();
+      console.log(`\nWe cleaned out the shelter\nKeep it clean!!\n\n`);
       // Clean cages will concurrently play, feed and bathe all pets.
       break;
-
     case "3":
       admitMenu();
       break;
     case "4":
       adoptMenu();
       break;
-    case "5":
+    case "5": //Feed, play, bathe all pets.
+      currentShelter.allPets();
+      console.log(
+        `\nWe cared for your pets!!\n\nCheck their current stats again!\n\n`
+      );
       break;
     case "6":
       quitMessage();
@@ -69,6 +76,7 @@ while (quitCondition) {
     default:
       console.log("Please enter a valid response!");
   }
+  tick();
 
   // const userResponse = input.question(
   //   "\nHow would you like to interact with your pet?\n" +
@@ -105,45 +113,45 @@ while (quitCondition) {
   // }
 }
 
-function showStats() {
-  console.log(
-    "\nEnergy is: " +
-      `${newUser.energy}` +
-      " Entertainment is: " +
-      `${newPet.entertainment}` +
-      " hygiene is: " +
-      `${newPet.hygiene}`
-  );
-}
+// function showStats() {
+//   console.log(
+//     "\nEnergy is: " +
+//       `${newUser.energy}` +
+//       " Entertainment is: " +
+//       `${newPet.entertainment}` +
+//       " hygiene is: " +
+//       `${newPet.hygiene}`
+//   );
+// }
 
-function petFeed() {
-  console.log("\nYou feed your pet an scooby snack!!!!!");
-  newPet.feed();
-  console.log("Your pet finished their scooby snack!!!");
-  console.log(
-    "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
-  );
-}
+// function petFeed() {
+//   console.log("\nYou feed your pet an scooby snack!!!!!");
+//   newPet.feed();
+//   console.log("Your pet finished their scooby snack!!!");
+//   console.log(
+//     "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+//   );
+// }
 
-function petPlay() {
-  console.log("\nYou play fetch with your pet!!!!");
-  newPet.play();
-  console.log("Your pet retrieved the ball!!");
-  console.log(
-    "Your pet gained 10 'joy'! Their entertainment is now " +
-      `${newPet.entertainment}`
-  );
-}
+// function petPlay() {
+//   console.log("\nYou play fetch with your pet!!!!");
+//   newPet.play();
+//   console.log("Your pet retrieved the ball!!");
+//   console.log(
+//     "Your pet gained 10 'joy'! Their entertainment is now " +
+//       `${newPet.entertainment}`
+//   );
+// }
 
-function petClean() {
-  console.log("\nYou wash your dirty pet!!!!");
-  newPet.bathe();
-  console.log("Your pet plays in the water while you wash it!!!!");
-  console.log(
-    "Your pet gained 10 'cleanliness'! Their hygiene is now " +
-      `${newPet.hygiene}`
-  );
-}
+// function petClean() {
+//   console.log("\nYou wash your dirty pet!!!!");
+//   newPet.bathe();
+//   console.log("Your pet plays in the water while you wash it!!!!");
+//   console.log(
+//     "Your pet gained 10 'cleanliness'! Their hygiene is now " +
+//       `${newPet.hygiene}`
+//   );
+// }
 
 function quitMessage() {
   console.log(
@@ -164,39 +172,39 @@ function quitMessage() {
 function adoptMenu() {
   console.log(" Thank you for choosing to adopt a new pet!");
   const petName = input.question(
-    "Enter the name of the pet you would like to adopt\n\n>>:"
+    "\nEnter\n1: to adopt Spot\n2: to adopt Hairball\n3: to adopt Talon\n4: to adopt Poop Machine\n5: to adopt Mechanized Death\n6: to adopt B2 Bomber.\n\n>>:"
   );
 
   switch (petName) {
-    case "Spot":
+    case "1":
       dogStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nyou adopted ${petName}`);
+      console.log(`\nYou adopted Spot!!\n`);
       break;
-    case "Hairball":
+    case "2":
       catStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nyou adopted ${petName}!`);
+      console.log(`\nYou adopted Hairball!!\n`);
       break;
-    case "Talon":
+    case "3":
       birdStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted ${petName}!`);
+      console.log(`\nYou adopted Talon!!\n`);
       break;
-    case "Poop Machine":
+    case "4":
       roboDogStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted ${petName}!`);
+      console.log(`\nYou adopted Poop Machine!!\n`);
       break;
-    case "Mechanized Death":
+    case "5":
       roboCatStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted ${petName}!`);
+      console.log(`\nYou adopted Mechanized Death!!\n`);
       break;
-    case "B2 Bomber":
-      mechBirdStarter.adopt();
+    case "6":
+      roboBirdStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted ${petName}!`);
+      console.log(`\nYou adopted B2 Bomber!!\n`);
       break;
   }
 }
@@ -206,45 +214,60 @@ function admitMenu() {
     `Enter the name of the pet you'd like to add.\n`
   );
   const newPetType = input.question(
-    `Enter the type of pet.\n You can choose:\n 1: Dog\n 2: Cat\n 3: Bird\n 4: RoboDog\n 5: RoboCat\n 6: Mechbird.\n`
+    `Enter the type of pet.\n You can choose:\n 1: Dog\n 2: Cat\n 3: Bird\n 4: RoboDog\n 5: RoboCat\n 6: Robobird.\n`
   );
   switch (newPetType) {
     case "1":
       const admittedDog = new Dog(newPetName, 106);
       admittedDog.adopt();
       currentShelter.addPet(admittedDog);
-      console.table(currentShelter.listPets());
+      admitConfirmation();
       break;
     case "2":
       const admittedCat = new Cat(newPetName, 107);
       admittedCat.adopt();
       currentShelter.addPet(admittedCat);
-      console.table(currentShelter.listPets());
+      admitConfirmation();
       break;
     case "3":
       const admittedBird = new Bird(newPetName, 108);
       admittedBird.adopt();
       currentShelter.addPet(admittedBird);
-      console.table(currentShelter.listPets());
+      admitConfirmation();
       break;
     case "4":
       const admittedRoboDog = new RoboDog(newPetName, 109);
       admittedRoboDog.adopt();
       currentShelter.addPet(admittedRoboDog);
-      console.table(currentShelter.listPets());
+      admitConfirmation();
       break;
     case "5":
       const admittedRoboCat = new RoboCat(newPetName, 110);
       admittedRoboCat.adopt();
       currentShelter.addPet(admittedRoboCat);
-      console.table(currentShelter.listPets());
+      admitConfirmation();
       break;
     case "6":
-      const admittedMechBird = new MechBird(newPetName, 111);
-      admittedMechBird.adopt();
-      currentShelter.addPet(admittedMechBird);
-      console.table(currentShelter.listPets());
+      const admittedRoboBird = new RoboBird(newPetName, 111);
+      admittedRoboBird.adopt();
+      currentShelter.addPet(admittedRoboBird);
+      admitConfirmation();
+      break;
     default:
+      console.log(`Please choose a valid option.`);
+  }
+
+  function admitConfirmation() {
+    console.log(
+      `\n${newPetName} has been added to the shelter!\nCheck the shelter for an updated list!!\n`
+    );
   }
   // console.table(currentShelter.listPets());
+}
+
+function tick() {
+  return (
+    (currentShelter._cleanliness -= 3),
+    console.log(`\nShelter cleanliness is now ${currentShelter.sanitation}!\n`)
+  );
 }

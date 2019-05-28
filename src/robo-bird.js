@@ -1,10 +1,10 @@
-const VirtualPet = require("../src/virtual-pet.js");
+const VirtualPet = require("./virtual-pet.js");
 
-class MechBird extends VirtualPet {
+class RoboBird extends VirtualPet {
   constructor(name, cage, energy, entertainment, hygiene, type = "robotic") {
     super(name, cage, energy, entertainment, hygiene, type);
     this._type = type;
   }
 }
 
-module.exports = MechBird;
+module.exports = RoboBird;
