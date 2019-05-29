@@ -25,8 +25,25 @@ class Shelter {
       pet.feed(), pet.play(), pet.bathe();
     });
   }
+  allPetStats() {
+    return Object.values(this._pets).map(pet => {
+      pet.energy, pet.hygiene, pet.entertainment;
+      if (pet.energy < 0 || pet.hygiene < 0 || pet.entertainment < 0) {
+        throw new Error("We will call PETA if you don't care for your pet!");
+      } else if (
+        pet.energy >= 100 ||
+        pet.hygiene >= 100 ||
+        pet.entertainment >= 100
+      ) {
+        console.log(`Your pet stats are full!`);
+      }
+    });
+  }
   listPets() {
     return this._pets;
+  }
+  shelterTick() {
+    return (this._cleanliness -= 3);
   }
 }
 
