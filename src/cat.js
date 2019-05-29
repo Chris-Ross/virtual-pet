@@ -1,8 +1,12 @@
-const VirtualPet = require("../src/virtual-pet.js");
+const OrganicPet = require("../src/organic-pet.js");
 
-class Cat extends VirtualPet {
-  constructor(energy, entertainment, hygiene, cage) {
+class Cat extends OrganicPet {
+  constructor(energy, entertainment, hygiene, cage, litterBox = 50) {
     super(energy, entertainment, hygiene, cage);
+    this._litterBox = litterBox;
+  }
+  get litterBox() {
+    return this._litterBox;
   }
 }
 

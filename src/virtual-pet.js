@@ -10,7 +10,6 @@ class VirtualPet {
     energy = 50,
     entertainment = 50,
     hygiene = 50,
-    type = "organic",
     isAdopted = false
   ) {
     this._name = name;
@@ -18,7 +17,6 @@ class VirtualPet {
     this._entertainment = entertainment;
     this._hygiene = hygiene;
     this._cage = cage;
-    this._type = type;
     this._isAdopted = isAdopted;
   }
   get name() {
@@ -35,9 +33,6 @@ class VirtualPet {
   }
   get cage() {
     return this._cage;
-  }
-  get type() {
-    return this._type;
   }
 
   get isAdopted() {

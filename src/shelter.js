@@ -1,3 +1,5 @@
+const OrganicPet = require("./organic-pet");
+
 // Requirements
 // const Dog = require("../src/dog");
 class Shelter {
@@ -22,7 +24,11 @@ class Shelter {
   }
   allPets() {
     Object.values(this._pets).forEach(pet => {
-      pet.feed(), pet.play(), pet.bathe();
+      if (pet instanceof OrganicPet) {
+        pet.feed(), pet.play(), pet.bathe();
+      } else {
+        pet.fillOil(), pet.repairPet(), pet.feed(), pet.play(), pet.bathe();
+      }
     });
   }
   allPetStats() {
