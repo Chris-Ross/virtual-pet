@@ -74,7 +74,7 @@ while (quitCondition) {
     case "5": //Feed, play, bathe all pets.
       currentShelter.allPets();
       yellowText(
-        "We cared for all your pets!!\n\nCheck their updated stats!\n\n"
+        "\nWe cared for all your pets!!\n\nCheck their updated stats!\n\n"
       );
       break;
     case "6":
@@ -129,18 +129,18 @@ function quitMessage() {
     _______________________
   < Please don't abandon me! >
    -------------------------
-          \\   ^__^
-           \\  (oo)\\_______
-              (__)\\       )\\/\\
-                  ||----w |
-                  ||     ||`
+          \\  ^__^
+           \\ (00)\\_______
+            \\/^/ \\       )\\/\\
+              U  \||-----||
+                 \||     ||`
   );
   console.log("\nThanks for playing! Come back soon!");
   quitCondition = false;
 }
 
 function adoptMenu() {
-  console.log(" Thank you for choosing to adopt a new pet!");
+  console.log(" Thank you for choosing to adopt a current pet!");
   const petName = input.question(
     "\nEnter\n1: to adopt spot\n2: to adopt hairball\n3: to adopt talon\n4: to adopt poop machine\n5: to adopt mechanized death\n6: to adopt big bomber.\n\n>>:"
   );
@@ -149,32 +149,32 @@ function adoptMenu() {
     case "1":
       dogStarter.adopt();
       console.table(currentShelter.listPets());
-      yellowText(`\nYou adopted Spot!!\n`);
+      yellowText(`\nYou adopted spot!!\n`);
       break;
     case "2":
       catStarter.adopt();
       console.table(currentShelter.listPets());
-      yellowText(`\nYou adopted Hairball!!\n`);
+      yellowText(`\nYou adopted hairball!!\n`);
       break;
     case "3":
       birdStarter.adopt();
       console.table(currentShelter.listPets());
-      yellowText(`\nYou adopted Talon!!\n`);
+      yellowText(`\nYou adopted talon!!\n`);
       break;
     case "4":
       roboDogStarter.adopt();
       console.table(currentShelter.listPets());
-      yellowText(`\nYou adopted Poop Machine!!\n`);
+      yellowText(`\nYou adopted poop machine!!\n`);
       break;
     case "5":
       roboCatStarter.adopt();
       console.table(currentShelter.listPets());
-      yellowText(`\nYou adopted Mechanized Death!!\n`);
+      yellowText(`\nYou adopted mechanized death!!\n`);
       break;
     case "6":
       roboBirdStarter.adopt();
       console.table(currentShelter.listPets());
-      yellowText(`\nYou adopted B2 Bomber!!\n`);
+      yellowText(`\nYou adopted big bomber!!\n`);
       break;
   }
 }
