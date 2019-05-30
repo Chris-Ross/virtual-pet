@@ -27,10 +27,10 @@ class RoboticPet extends VirtualPet {
     return this._damage;
   }
   repairPet() {
-    this._damage -= 7;
+    this._damage -= 3;
   }
   fillOil() {
-    this._oil += 8;
+    this._oil += 3;
   }
 }
 module.exports = RoboticPet;

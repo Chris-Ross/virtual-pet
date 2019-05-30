@@ -1,8 +1,3 @@
-/* constructor(x, y, z) {
-    this._x = x;
-    this._y = y;
-    this._z = z;
-};*/
 class VirtualPet {
   constructor(
     name,
@@ -41,18 +36,12 @@ class VirtualPet {
 
   feed() {
     this._energy += 5;
-    this._hygiene -= 2;
-    this._entertainment -= 1;
   }
   play() {
-    this._energy -= 2;
-    this._hygiene -= 1;
     this._entertainment += 5;
   }
   bathe() {
-    this._energy -= 1;
-    this._hygiene += 5;
-    this._entertainment -= 2;
+    (this._hygiene += 5), (this._energy -= 10);
   }
 
   adopt() {

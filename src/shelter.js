@@ -1,7 +1,7 @@
-const OrganicPet = require("./organic-pet");
-
 // Requirements
-// const Dog = require("../src/dog");
+const OrganicPet = require("./organic-pet");
+const Dog = require("../src/dog");
+const Cat = require("../src/cat");
 class Shelter {
   constructor(cleanliness = 50) {
     this._pets = {};
@@ -19,6 +19,16 @@ class Shelter {
   sanitize() {
     this._cleanliness += 13;
   }
+  cleanLitterBox() {
+    return Object.values(this._pets).map(pet => {
+      if (pet instanceof Dog) {
+        pet.cleanLitter();
+      } else if (pet instanceof Cat) {
+        pet.cleanLitter();
+      }
+    });
+  }
+
   addPet(pet) {
     this._pets[pet.name] = pet;
   }
@@ -44,6 +54,18 @@ class Shelter {
         console.log(`Your pet stats are full!`);
       }
     });
+  }
+  litterBoxTick() {
+    return Object.values(this._pets).map(pet => {
+      if (pet instanceof Dog) {
+        pet.litterTick();
+      } else if (pet instanceof Cat) {
+        pet.litterTick();
+      }
+    });
+  }
+  selectPet(petName) {
+    return this._pets[petName];
   }
   listPets() {
     return this._pets;

@@ -9,6 +9,12 @@ class Dog extends OrganicPet {
   get litterBox() {
     return this._litterBox;
   }
+  litterTick() {
+    return (this._litterBox -= 1);
+  }
+  cleanLitter() {
+    return this._litterBox += 3
+  }
 }
 
 module.exports = Dog;

@@ -40,13 +40,11 @@ describe("Shelter and fxns", () => {
     const pet1 = new VirtualPet("Bob", 102);
     const pet2 = new VirtualPet("Link", 103);
     underTest.addPet(pet);
-    underTest.addPet(pet1);
-    underTest.addPet(pet2);
+    // underTest.addPet(pet1);
+    // underTest.addPet(pet2);
 
     expect(pet.name).toBe("Sally");
     // expect(pet1.name).toBe("Bob");
     // expect(pet2.name).toBe("Link");
   });
-
-  
 });
