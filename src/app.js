@@ -253,5 +253,4 @@ function tick() {
 
 function statValidation() {
   currentShelter.allPetStats();
-  //console.log(currentShelter.allPetStats());
 }

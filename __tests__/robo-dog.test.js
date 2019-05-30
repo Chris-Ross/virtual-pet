@@ -7,13 +7,13 @@ describe("RoboDog", () => {
   test("Should return pet type", () => {
     const underTest = new RoboDog();
     const actual = underTest.type;
-    expect(actual).toEqual("robotic");
+    expect(actual).toBe("robotic");
   });
 
   test("Should return pet name", () => {
     const underTest = new RoboDog("fucker");
     const actual = underTest.name;
-    expect(actual).toEqual("fucker");
+    expect(actual).toBe("fucker");
   });
 
   test("Should return energy stat", () => {
