@@ -33,7 +33,7 @@ currentShelter.addPet(birdStarter);
 currentShelter.addPet(roboDogStarter);
 currentShelter.addPet(roboCatStarter);
 currentShelter.addPet(roboBirdStarter);
-
+// Welcome message
 console.log(`%c
 
 .-------------.       .    .   *       *   
@@ -49,11 +49,11 @@ console.log(
     currentShelter.sanitation
   }!\nDon't let it get too dirty...\n\n`
 );
+//Game loop
 let quitCondition = true;
 while (quitCondition) {
-  // setInterval(tick, 3000);
   const entryResponse = input.question(
-    "What would you like to do?\n1. List current pets.\n2. Clean cages.\n3. Admit a pet to the shelter.\n4. Adopt a Pet.\n5. Interact with ALL pets!!\n6. Interact with one pet.\n7. Quit\n\n>> :"
+    "What would you like to do?\n1. List current pets.\n2. Clean cages and litter boxes.\n3. Admit a pet to the shelter.\n4. Adopt a Pet.\n5. Delux Member Package!!\n6. Interact with one pet.\n7. Quit\n\n>> :"
   );
   switch (entryResponse) {
     case "1":
@@ -63,7 +63,6 @@ while (quitCondition) {
       currentShelter.sanitize();
       currentShelter.cleanLitterBox();
       yellowText("\nWe cleaned out the shelter\nKeep it clean!!\n");
-      // Clean cages will concurrently play, feed and bathe all pets.
       break;
     case "3":
       admitMenu();
@@ -78,17 +77,7 @@ while (quitCondition) {
       );
       break;
     case "6":
-      const selectedPet = currentShelter.selectPet(
-        input.question(
-          "Please enter the name of the pet you want to interact with.\n >>:"
-        )
-      );
-      console.log(`What would you like to do with ${selectedPet.name}\n`);
-      const petOptions = input.question(
-        `\nEnter\n1: to play with ${selectedPet.name}\n2: to feed ${
-          selectedPet.name
-        }\n3: to bathe ${selectedPet.name}\n >>:`
-      );
+      const { petOptions, selectedPet } = selectPetMenu();
       singlePetMenu(petOptions, selectedPet);
       break;
     case "7":
@@ -100,6 +89,23 @@ while (quitCondition) {
   tick();
   statValidation();
 }
+// Global functions
+function selectPetMenu() {
+  const selectedPet = currentShelter.selectPet(
+    input.question(
+      yellowText(
+        "Please enter the name of the pet you want to interact with.\n >>:"
+      )
+    )
+  );
+  yellowText(`What would you like to do with ${selectedPet.name}\n`);
+  const petOptions = input.question(
+    `\nEnter\n1: to play with ${selectedPet.name}\n2: to feed ${
+      selectedPet.name
+    }\n3: to bathe ${selectedPet.name}\n >>:`
+  );
+  return { petOptions, selectedPet };
+}
 
 function singlePetMenu(petOptions, selectedPet) {
   if (petOptions === "1") {
@@ -107,19 +113,21 @@ function singlePetMenu(petOptions, selectedPet) {
     yellowText(
       `\nYou played with ${selectedPet.name}, their entertainment is now ${
         selectedPet.entertainment
-      }`
+      }\n`
     );
   } else if (petOptions === "2") {
     selectedPet.feed();
     yellowText(
-      `\nYou fed ${selectedPet.name}, their energy is now ${selectedPet.energy}`
+      `\nYou fed ${selectedPet.name}, their energy is now ${
+        selectedPet.energy
+      }\n`
     );
   } else
     selectedPet.bathe(),
       yellowText(
         `\nYou washed ${selectedPet.name}, their hygiene is now ${
           selectedPet.hygiene
-        }`
+        }\n`
       );
 }
 
@@ -140,7 +148,7 @@ function quitMessage() {
 }
 
 function adoptMenu() {
-  console.log(" Thank you for choosing to adopt a current pet!");
+  yellowText("Thank you for choosing to adopt a current pet!");
   const petName = input.question(
     "\nEnter\n1: to adopt spot\n2: to adopt hairball\n3: to adopt talon\n4: to adopt poop machine\n5: to adopt mechanized death\n6: to adopt big bomber.\n\n>>:"
   );
@@ -181,10 +189,10 @@ function adoptMenu() {
 
 function admitMenu() {
   const newPetName = input.question(
-    `Enter the name of the pet you'd like to add.\n`
+    yellowText(`\nEnter the name of the pet you'd like to add.\n>> :`)
   );
   const newPetType = input.question(
-    `Enter the type of pet.\n You can choose:\n 1: Dog\n 2: Cat\n 3: Bird\n 4: RoboDog\n 5: RoboCat\n 6: Robobird.\n`
+    `\nEnter the type of pet.\nYou can choose:\n1: Dog\n2: Cat\n3: Bird\n4: RoboDog\n5: RoboCat\n6: Robobird.\n>> :`
   );
   switch (newPetType) {
     case "1":
@@ -224,7 +232,7 @@ function admitMenu() {
       admitConfirmation();
       break;
     default:
-      console.log(`Please choose a valid option.`);
+      redText(`Please choose a valid option.`);
   }
 
   function admitConfirmation() {

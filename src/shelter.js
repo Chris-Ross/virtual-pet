@@ -19,6 +19,18 @@ class Shelter {
   sanitize() {
     this._cleanliness += 13;
   }
+  addPet(pet) {
+    this._pets[pet.name] = pet;
+  }
+  listPets() {
+    return this._pets;
+  }
+  selectPet(petName) {
+    return this._pets[petName];
+  }
+  shelterTick() {
+    return (this._cleanliness -= 3);
+  }
   cleanLitterBox() {
     return Object.values(this._pets).map(pet => {
       if (pet instanceof Dog) {
@@ -27,10 +39,6 @@ class Shelter {
         pet.cleanLitter();
       }
     });
-  }
-
-  addPet(pet) {
-    this._pets[pet.name] = pet;
   }
   allPets() {
     Object.values(this._pets).forEach(pet => {
@@ -51,7 +59,7 @@ class Shelter {
         pet.hygiene >= 100 ||
         pet.entertainment >= 100
       ) {
-        console.log(`Your pet stats are full!`);
+        console.log(`\n${pet.name} has max stats!`);
       }
     });
   }
@@ -64,22 +72,6 @@ class Shelter {
       }
     });
   }
-  selectPet(petName) {
-    return this._pets[petName];
-  }
-  listPets() {
-    return this._pets;
-  }
-  shelterTick() {
-    return (this._cleanliness -= 3);
-  }
 }
 
 module.exports = Shelter;
-
-// removePet(petToBeDeleted) {
-//   const petToReturn = this._pets[petToBeDeleted];
-//   delete this._pets[petToBeDeleted];
-
-//   return petToReturn;
-// }

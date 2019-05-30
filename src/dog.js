@@ -13,7 +13,7 @@ class Dog extends OrganicPet {
     return (this._litterBox -= 1);
   }
   cleanLitter() {
-    return this._litterBox += 3
+    return (this._litterBox += 5);
   }
 }
 

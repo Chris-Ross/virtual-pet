@@ -9,12 +9,11 @@ class Cat extends OrganicPet {
     return this._litterBox;
   }
   litterTick() {
-    return this._litterBox -= 1;
+    return (this._litterBox -= 1);
   }
   cleanLitter() {
-    return this._litterBox += 3
+    return (this._litterBox += 5);
   }
 }
-
 
 module.exports = Cat;
