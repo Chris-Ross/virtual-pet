@@ -243,7 +243,6 @@ function admitMenu() {
       `\n${newPetName} has been added to the shelter!\nCheck the shelter for an updated list!!\n`
     );
   }
-  // console.table(currentShelter.listPets());
 }
 
 function tick() {
