@@ -19,6 +19,9 @@ function redText(message) {
 function greenText(message) {
   console.log(chalk.green(chalk.underline(message)));
 }
+function asciiText(message) {
+  console.log(chalk.cyan(chalk.inverse(message)));
+}
 
 // Starter pets
 const dogStarter = new Dog("spot", 100);
@@ -135,16 +138,16 @@ function singlePetMenu(petOptions, selectedPet) {
 }
 
 function quitMessage() {
-  console.log(
-    `%c
-    _______________________
-  < Please don't abandon me! >
-   -------------------------
-          \\  ^__^
-           \\ (00)\\_______
-            \\/^/ \\       )\\/\\
-              U  \||-----||
-                 \||     ||`
+  asciiText(
+    `%c                                   
+    _______________________          
+  < Please don't abandon me! >       
+    -----------------------          
+          \   ^__^                    
+           \  (00)\\_______            
+            \ /^/\\        )\\/\\        
+              U  \||-----||           
+                 \||     ||           `
   );
   console.log("\nThanks for playing! Come back soon!");
   quitCondition = false;
