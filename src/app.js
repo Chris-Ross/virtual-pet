@@ -16,6 +16,9 @@ function yellowText(message) {
 function redText(message) {
   console.log(chalk.red(chalk.underline(message)));
 }
+function greenText(message) {
+  console.log(chalk.green(chalk.underline(message)));
+}
 
 // Starter pets
 const dogStarter = new Dog("spot", 100);
@@ -94,15 +97,15 @@ function selectPetMenu() {
   const selectedPet = currentShelter.selectPet(
     input.question(
       yellowText(
-        "Please enter the name of the pet you want to interact with.\n >>:"
+        "\nPlease enter the name of the pet you want to interact with.\n >> :"
       )
     )
   );
-  yellowText(`What would you like to do with ${selectedPet.name}\n`);
+  yellowText(`\nWhat would you like to do with ${selectedPet.name}`);
   const petOptions = input.question(
     `\nEnter\n1: to play with ${selectedPet.name}\n2: to feed ${
       selectedPet.name
-    }\n3: to bathe ${selectedPet.name}\n >>:`
+    }\n3: to bathe ${selectedPet.name}\n >> :`
   );
   return { petOptions, selectedPet };
 }

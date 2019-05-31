@@ -15,13 +15,13 @@ describe("Shelter and fxns", () => {
     expect(underTest.shelterSize).toEqual(1);
   });
 
-  test("should remove pet from shelter", () => {
-    const pet1 = new VirtualPet("Bob", 101);
-    underTest.addPet(pet1);
-    const removedPet = underTest.removePet("Bob");
+  // test("should remove pet from shelter", () => {
+  //   const pet1 = new VirtualPet("Bob", 101);
+  //   underTest.addPet(pet1);
+  //   const removedPet = underTest.removePet("Bob");
 
-    expect(removedPet).toBe(pet1);
-  });
+  //   expect(removedPet).toBe(pet1);
+  // });
 
   test("list all pets in shelter", () => {
     const pet = new VirtualPet("Sally", 101);
