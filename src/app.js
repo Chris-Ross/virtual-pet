@@ -53,7 +53,7 @@ console.log(
 let quitCondition = true;
 while (quitCondition) {
   const entryResponse = input.question(
-    "What would you like to do?\n1. List current pets.\n2. Clean cages and litter boxes.\n3. Admit a pet to the shelter.\n4. Adopt a Pet.\n5. Delux Member Package!!\n6. Interact with one pet.\n7. Quit\n\n>> :"
+    "What would you like to do?\n1. List current pets.\n2. Clean cages and litter boxes.\n3. Admit a pet to the shelter.\n4. Adopt a Pet.\n5. Deluxe Member Package!!\n6. Interact with one pet.\n7. Quit\n\n>> :"
   );
   switch (entryResponse) {
     case "1":
