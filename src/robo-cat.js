@@ -1,9 +1,8 @@
-const VirtualPet = require("../src/virtual-pet.js");
+const RoboticPet = require("./robotic-pet.js");
 
-class RoboCat extends VirtualPet {
-  constructor(name, cage, energy, entertainment, hygiene, type = "robotic") {
+class RoboCat extends RoboticPet {
+  constructor(name, cage, energy, entertainment, hygiene, type) {
     super(name, cage, energy, entertainment, hygiene, type);
-    this._type = type;
   }
 }
 

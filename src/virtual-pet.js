@@ -1,8 +1,3 @@
-/* constructor(x, y, z) {
-    this._x = x;
-    this._y = y;
-    this._z = z;
-};*/
 class VirtualPet {
   constructor(
     name,
@@ -10,7 +5,6 @@ class VirtualPet {
     energy = 50,
     entertainment = 50,
     hygiene = 50,
-    type = "organic",
     isAdopted = false
   ) {
     this._name = name;
@@ -18,7 +12,6 @@ class VirtualPet {
     this._entertainment = entertainment;
     this._hygiene = hygiene;
     this._cage = cage;
-    this._type = type;
     this._isAdopted = isAdopted;
   }
   get name() {
@@ -36,9 +29,6 @@ class VirtualPet {
   get cage() {
     return this._cage;
   }
-  get type() {
-    return this._type;
-  }
 
   get isAdopted() {
     return this._isAdopted;
@@ -46,18 +36,12 @@ class VirtualPet {
 
   feed() {
     this._energy += 5;
-    this._hygiene -= 2;
-    this._entertainment -= 1;
   }
   play() {
-    this._energy -= 2;
-    this._hygiene -= 1;
     this._entertainment += 5;
   }
   bathe() {
-    this._energy -= 1;
-    this._hygiene += 5;
-    this._entertainment -= 2;
+    (this._hygiene += 5), (this._energy -= 10);
   }
 
   adopt() {

@@ -10,15 +10,26 @@ const RoboCat = require("./robo-cat");
 const RoboBird = require("./robo-bird");
 
 //Chalk colors
-const blueText = chalk.blue;
+function yellowText(message) {
+  console.log(chalk.yellow(message));
+}
+function redText(message) {
+  console.log(chalk.red(chalk.underline(message)));
+}
+function greenText(message) {
+  console.log(chalk.green(chalk.underline(message)));
+}
+function asciiText(message) {
+  console.log(chalk.cyan(chalk.inverse(message)));
+}
 
 // Starter pets
-const dogStarter = new Dog("Spot", 100);
-const catStarter = new Cat("Hairball", 101);
-const birdStarter = new Bird("Talon", 102);
-const roboDogStarter = new RoboDog("Poop Machine", 103);
-const roboCatStarter = new RoboCat("Mechanized Death", 104);
-const roboBirdStarter = new RoboBird("B2 Bomber", 105);
+const dogStarter = new Dog("spot", 100);
+const catStarter = new Cat("hairball", 101);
+const birdStarter = new Bird("talon", 102);
+const roboDogStarter = new RoboDog("poop machine", 103);
+const roboCatStarter = new RoboCat("mechanized death", 104);
+const roboBirdStarter = new RoboBird("big bomber", 105);
 
 const currentShelter = new Shelter();
 
@@ -28,7 +39,7 @@ currentShelter.addPet(birdStarter);
 currentShelter.addPet(roboDogStarter);
 currentShelter.addPet(roboCatStarter);
 currentShelter.addPet(roboBirdStarter);
-
+// Welcome message
 console.log(`%c
 
 .-------------.       .    .   *       *   
@@ -44,11 +55,11 @@ console.log(
     currentShelter.sanitation
   }!\nDon't let it get too dirty...\n\n`
 );
+//Game loop
 let quitCondition = true;
 while (quitCondition) {
-  // setInterval(tick, 3000);
   const entryResponse = input.question(
-    "What would you like to do?\n1. List current pets\n2. Clean cages\n3. Admit a pet to the shelter\n4. Adopt a Pet\n5. Interact with ALL pets!!\n6. Quit\n\n>> :"
+    "What would you like to do?\n1. List current pets.\n2. Clean cages and litter boxes.\n3. Admit a pet to the shelter.\n4. Adopt a Pet.\n5. Deluxe Member Package!!\n6. Interact with one pet.\n7. Quit\n\n>> :"
   );
   switch (entryResponse) {
     case "1":
@@ -56,8 +67,8 @@ while (quitCondition) {
       break;
     case "2":
       currentShelter.sanitize();
-      console.log(`\nWe cleaned out the shelter\nKeep it clean!!\n\n`);
-      // Clean cages will concurrently play, feed and bathe all pets.
+      currentShelter.cleanLitterBox();
+      yellowText("\nWe cleaned out the shelter\nKeep it clean!!\n");
       break;
     case "3":
       admitMenu();
@@ -67,82 +78,127 @@ while (quitCondition) {
       break;
     case "5": //Feed, play, bathe all pets.
       currentShelter.allPets();
-      console.log(
-        `\nWe cared for your pets!!\n\nCheck their current stats again!\n\n`
+      yellowText(
+        "\nWe cared for all your pets!!\n\nCheck their updated stats!\n\n"
       );
       break;
     case "6":
+      const { petOptions, selectedPet } = selectPetMenu();
+      singlePetMenu(petOptions, selectedPet);
+      break;
+    case "7":
       quitMessage();
       break;
     default:
-      console.log("Please enter a valid response!");
+      redText("\nPlease enter a valid response!\n");
   }
   tick();
   statValidation();
 }
+// Global functions
+function selectPetMenu() {
+  const selectedPet = currentShelter.selectPet(
+    input.question(
+      yellowText(
+        "\nPlease enter the name of the pet you want to interact with.\n >> :"
+      )
+    )
+  );
+  yellowText(`\nWhat would you like to do with ${selectedPet.name}`);
+  const petOptions = input.question(
+    `\nEnter\n1: to play with ${selectedPet.name}\n2: to feed ${
+      selectedPet.name
+    }\n3: to bathe ${selectedPet.name}\n >> :`
+  );
+  return { petOptions, selectedPet };
+}
+
+function singlePetMenu(petOptions, selectedPet) {
+  if (petOptions === "1") {
+    selectedPet.play();
+    yellowText(
+      `\nYou played with ${selectedPet.name}, their entertainment is now ${
+        selectedPet.entertainment
+      }\n`
+    );
+  } else if (petOptions === "2") {
+    selectedPet.feed();
+    yellowText(
+      `\nYou fed ${selectedPet.name}, their energy is now ${
+        selectedPet.energy
+      }\n`
+    );
+  } else
+    selectedPet.bathe(),
+      yellowText(
+        `\nYou washed ${selectedPet.name}, their hygiene is now ${
+          selectedPet.hygiene
+        }\n`
+      );
+}
 
 function quitMessage() {
-  console.log(
-    `%c
-    _______________________
-  < Please don't abandon me! >
-   -------------------------
-          \\   ^__^
-           \\  (oo)\\_______
-              (__)\\       )\\/\\
-                  ||----w |
-                  ||     ||`
+  asciiText(
+    `%c                                   
+    _______________________          
+  < Please don't abandon me! >       
+    -----------------------          
+          \   ^__^                    
+           \  (00)\\_______            
+            \ /^/\\        )\\/\\        
+              U  \||-----||           
+                 \||     ||           `
   );
   console.log("\nThanks for playing! Come back soon!");
   quitCondition = false;
 }
 
 function adoptMenu() {
-  console.log(" Thank you for choosing to adopt a new pet!");
+  yellowText("Thank you for choosing to adopt a current pet!");
   const petName = input.question(
-    "\nEnter\n1: to adopt Spot\n2: to adopt Hairball\n3: to adopt Talon\n4: to adopt Poop Machine\n5: to adopt Mechanized Death\n6: to adopt B2 Bomber.\n\n>>:"
+    "\nEnter\n1: to adopt spot\n2: to adopt hairball\n3: to adopt talon\n4: to adopt poop machine\n5: to adopt mechanized death\n6: to adopt big bomber.\n\n>>:"
   );
 
   switch (petName) {
     case "1":
       dogStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted Spot!!\n`);
+      yellowText(`\nYou adopted spot!!\n`);
       break;
     case "2":
       catStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted Hairball!!\n`);
+      yellowText(`\nYou adopted hairball!!\n`);
       break;
     case "3":
       birdStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted Talon!!\n`);
+      yellowText(`\nYou adopted talon!!\n`);
       break;
     case "4":
       roboDogStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted Poop Machine!!\n`);
+      yellowText(`\nYou adopted poop machine!!\n`);
       break;
     case "5":
       roboCatStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted Mechanized Death!!\n`);
+      yellowText(`\nYou adopted mechanized death!!\n`);
       break;
     case "6":
       roboBirdStarter.adopt();
       console.table(currentShelter.listPets());
-      console.log(`\nYou adopted B2 Bomber!!\n`);
+      yellowText(`\nYou adopted big bomber!!\n`);
       break;
   }
 }
 
 function admitMenu() {
   const newPetName = input.question(
-    `Enter the name of the pet you'd like to add.\n`
+    yellowText(`\nEnter the name of the pet you'd like to add.\n>> :`)
   );
   const newPetType = input.question(
-    `Enter the type of pet.\n You can choose:\n 1: Dog\n 2: Cat\n 3: Bird\n 4: RoboDog\n 5: RoboCat\n 6: Robobird.\n`
+    `\nEnter the type of pet.\nYou can choose:\n1: Dog\n2: Cat\n3: Bird\n4: RoboDog\n5: RoboCat\n6: Robobird.\n>> :`
   );
   switch (newPetType) {
     case "1":
@@ -182,25 +238,24 @@ function admitMenu() {
       admitConfirmation();
       break;
     default:
-      console.log(`Please choose a valid option.`);
+      redText(`Please choose a valid option.`);
   }
 
   function admitConfirmation() {
-    console.log(
+    yellowText(
       `\n${newPetName} has been added to the shelter!\nCheck the shelter for an updated list!!\n`
     );
   }
-  // console.table(currentShelter.listPets());
 }
 
 function tick() {
   return (
+    currentShelter.litterBoxTick(),
     currentShelter.shelterTick(),
-    console.log(`\nShelter cleanliness is now ${currentShelter.sanitation}!\n`)
+    redText(`Shelter cleanliness is now ${currentShelter.sanitation}!\n`)
   );
 }
 
 function statValidation() {
   currentShelter.allPetStats();
-  //console.log(currentShelter.allPetStats());
 }

@@ -1,5 +1,7 @@
 // Requirements
-// const Dog = require("../src/dog");
+const OrganicPet = require("./organic-pet");
+const Dog = require("../src/dog");
+const Cat = require("../src/cat");
 class Shelter {
   constructor(cleanliness = 50) {
     this._pets = {};
@@ -20,9 +22,31 @@ class Shelter {
   addPet(pet) {
     this._pets[pet.name] = pet;
   }
+  listPets() {
+    return this._pets;
+  }
+  selectPet(petName) {
+    return this._pets[petName];
+  }
+  shelterTick() {
+    return (this._cleanliness -= 3);
+  }
+  cleanLitterBox() {
+    return Object.values(this._pets).map(pet => {
+      if (pet instanceof Dog) {
+        pet.cleanLitter();
+      } else if (pet instanceof Cat) {
+        pet.cleanLitter();
+      }
+    });
+  }
   allPets() {
     Object.values(this._pets).forEach(pet => {
-      pet.feed(), pet.play(), pet.bathe();
+      if (pet instanceof OrganicPet) {
+        pet.feed(), pet.play(), pet.bathe();
+      } else {
+        pet.fillOil(), pet.repairPet(), pet.feed(), pet.play(), pet.bathe();
+      }
     });
   }
   allPetStats() {
@@ -35,23 +59,19 @@ class Shelter {
         pet.hygiene >= 100 ||
         pet.entertainment >= 100
       ) {
-        console.log(`Your pet stats are full!`);
+        console.log(`\n${pet.name} has max stats!`);
       }
     });
   }
-  listPets() {
-    return this._pets;
-  }
-  shelterTick() {
-    return (this._cleanliness -= 3);
+  litterBoxTick() {
+    return Object.values(this._pets).map(pet => {
+      if (pet instanceof Dog) {
+        pet.litterTick();
+      } else if (pet instanceof Cat) {
+        pet.litterTick();
+      }
+    });
   }
 }
 
 module.exports = Shelter;
-
-// removePet(petToBeDeleted) {
-//   const petToReturn = this._pets[petToBeDeleted];
-//   delete this._pets[petToBeDeleted];
-
-//   return petToReturn;
-// }

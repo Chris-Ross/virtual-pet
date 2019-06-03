@@ -6,14 +6,14 @@ describe("RoboDog", () => {
   let underTest;
   test("Should return pet type", () => {
     const underTest = new RoboDog();
-    const actual = underTest.type;
-    expect(actual).toEqual("robotic");
+    const actual = underTest.petType;
+    expect(actual).toBe("robotic");
   });
 
   test("Should return pet name", () => {
     const underTest = new RoboDog("fucker");
     const actual = underTest.name;
-    expect(actual).toEqual("fucker");
+    expect(actual).toBe("fucker");
   });
 
   test("Should return energy stat", () => {
@@ -27,16 +27,16 @@ describe("RoboDog", () => {
     underTest.feed();
     const actual = underTest.energy;
     // Here our toEqual is 60 because we are calling the eat method.
-    expect(actual).toEqual(60);
+    expect(actual).toEqual(55);
   });
 
   test("Should return entertainment stat && When pet is played with entertainment should increase", () => {
     const underTest = new RoboDog("bob");
     underTest.play();
     const actual = underTest.entertainment;
-    expect(actual).toEqual(60);
+    expect(actual).toEqual(55);
   });
-  
+
   test("Should return hygiene stat", () => {
     const underTest = new RoboDog("bob");
     const actual = underTest.hygiene;
@@ -46,6 +46,6 @@ describe("RoboDog", () => {
     const underTest = new RoboDog("bob");
     underTest.bathe();
     const actual = underTest.hygiene;
-    expect(actual).toEqual(60);
+    expect(actual).toEqual(55);
   });
 });
