@@ -26,7 +26,7 @@ describe("RoboDog", () => {
     const underTest = new RoboDog("bob");
     underTest.feed();
     const actual = underTest.energy;
-    // Here our toEqual is 60 because we are calling the eat method.
+    // Here our toEqual is 55 because we are calling the eat method.
     expect(actual).toEqual(55);
   });
 
