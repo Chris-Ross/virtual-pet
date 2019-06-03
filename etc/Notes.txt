@@ -1,0 +1,84 @@
+Pulled files from github
+Installed node
+Installed readline-sync
+Installed Jest
+
+Increase in test method means that when fed the numerical value of hunger goes up
+
+Ok
+
+
+// const userResponse = input.question(
+  //   "\nHow would you like to interact with your pet?\n" +
+  //     `Enter "1" for ${blueText("Show pet stats")}\n` +
+  //     `Enter "2" for ${blueText("Feed")}\n` +
+  //     `Enter "3" for ${blueText(
+  //       "Play"
+  //     )} this will increase entertainment and decrease energy and hygiene!\n` +
+  //     `Enter "4" for ${blueText("Bathe")}\n` +
+  //     `Enter "5" for ${blueText("Quit")}\n\n`
+  // );
+
+  // switch (userResponse) {
+  //   case "1":
+  //     showStats();
+  //     break;
+  //   case "2":
+  //     petFeed();
+  //     break;
+  //   case "3":
+  //     petPlay();
+  //     break;
+  //   case "4":
+  //     petClean();
+  //     break;
+  //   case "5":
+  //     quitMessage();
+  //     break;
+  //   default:
+  //     console.log(
+  //       "\nInvalid response. Please input a valid response from the menu\n"
+  //     );
+  //     break;
+  // }
+}
+
+// function showStats() {
+//   console.log(
+//     "\nEnergy is: " +
+//       `${newUser.energy}` +
+//       " Entertainment is: " +
+//       `${newPet.entertainment}` +
+//       " hygiene is: " +
+//       `${newPet.hygiene}`
+//   );
+// }
+
+// function petFeed() {
+//   console.log("\nYou feed your pet an scooby snack!!!!!");
+//   newPet.feed();
+//   console.log("Your pet finished their scooby snack!!!");
+//   console.log(
+//     "Your pet gained 10 'food'! Their energy is now " + `${newPet.energy}`
+//   );
+// }
+
+// function petPlay() {
+//   console.log("\nYou play fetch with your pet!!!!");
+//   newPet.play();
+//   console.log("Your pet retrieved the ball!!");
+//   console.log(
+//     "Your pet gained 10 'joy'! Their entertainment is now " +
+//       `${newPet.entertainment}`
+//   );
+// }
+
+// function petClean() {
+//   console.log("\nYou wash your dirty pet!!!!");
+//   newPet.bathe();
+//   console.log("Your pet plays in the water while you wash it!!!!");
+//   console.log(
+//     "Your pet gained 10 'cleanliness'! Their hygiene is now " +
+//       `${newPet.hygiene}`
+//   );
+// }
